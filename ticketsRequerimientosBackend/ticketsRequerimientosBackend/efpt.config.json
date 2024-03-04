@@ -1,0 +1,52 @@
+﻿{
+   "CodeGenerationMode": 3,
+   "ContextClassName": "CMS-Software-controlContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "ticketsRequerimientosBackend",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[asignacionTecnicoTicket]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[mensajeriaTicket]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ticketresolucion]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "desktop-bp9emvl\\sqlexpress.CMS-Software-control.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}
