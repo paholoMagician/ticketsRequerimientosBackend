@@ -9,7 +9,7 @@ public partial class Ticketresolucion
 {
     public int IdRequerimiento { get; set; }
 
-    public int? Idcliente { get; set; }
+    public string Idcliente { get; set; }
 
     public string UrlA { get; set; }
 

@@ -20,6 +20,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[cliente]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[mensajeriaTicket]",
          "ObjectType": 0
       },
@@ -32,12 +36,13 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": "desktop-bp9emvl\\sqlexpress.CMS-Software-control.dbo",
+   "UiHint": "desktop-k7dsnp4\\sqlexpress.CMS-Software-control.dbo",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
    "UseDateOnlyTimeOnly": false,
    "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
    "UseFluentApiOnly": true,
    "UseHandleBars": false,
    "UseHierarchyId": false,
@@ -49,6 +54,7 @@
    "UseNoObjectFilter": false,
    "UseNodaTime": false,
    "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
    "UseSchemaFolders": false,
    "UseSchemaNamespaces": false,
    "UseSpatial": false,

@@ -15,6 +15,8 @@ public partial class CMSSoftwarecontrolContext : DbContext
 
     public virtual DbSet<AsignacionTecnicoTicket> AsignacionTecnicoTicket { get; set; }
 
+    public virtual DbSet<Cliente> Cliente { get; set; }
+
     public virtual DbSet<MensajeriaTicket> MensajeriaTicket { get; set; }
 
     public virtual DbSet<Ticketresolucion> Ticketresolucion { get; set; }
@@ -55,6 +57,89 @@ public partial class CMSSoftwarecontrolContext : DbContext
                 .HasColumnName("urlB");
         });
 
+        modelBuilder.Entity<Cliente>(entity =>
+        {
+            entity.HasKey(e => new { e.Codcliente, e.Ruc }).HasName("PK_cliente1_1");
+
+            entity.ToTable("cliente");
+
+            entity.Property(e => e.Codcliente)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("codcliente");
+            entity.Property(e => e.Ruc)
+                .HasMaxLength(25)
+                .IsUnicode(false)
+                .HasColumnName("ruc");
+            entity.Property(e => e.Codcia)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("codcia");
+            entity.Property(e => e.Coduser)
+                .IsRequired()
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("coduser");
+            entity.Property(e => e.Correomantenimiento)
+                .HasMaxLength(150)
+                .IsUnicode(false)
+                .HasColumnName("correomantenimiento");
+            entity.Property(e => e.Correopago)
+                .HasMaxLength(150)
+                .IsUnicode(false)
+                .HasColumnName("correopago");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("descripcion");
+            entity.Property(e => e.Extension1)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("extension1");
+            entity.Property(e => e.Extension2)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("extension2");
+            entity.Property(e => e.Fechacontfinal)
+                .HasColumnType("datetime")
+                .HasColumnName("fechacontfinal");
+            entity.Property(e => e.Fechacontinicio)
+                .HasColumnType("datetime")
+                .HasColumnName("fechacontinicio");
+            entity.Property(e => e.Nombre)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("nombre");
+            entity.Property(e => e.NombreMantenimiento)
+                .HasMaxLength(150)
+                .IsUnicode(false)
+                .HasColumnName("nombreMantenimiento");
+            entity.Property(e => e.NombrePago)
+                .HasMaxLength(150)
+                .IsUnicode(false)
+                .HasColumnName("nombrePago");
+            entity.Property(e => e.Observacion)
+                .HasMaxLength(500)
+                .IsUnicode(false)
+                .HasColumnName("observacion");
+            entity.Property(e => e.Replegal)
+                .HasMaxLength(150)
+                .IsUnicode(false)
+                .HasColumnName("replegal");
+            entity.Property(e => e.Telfclimanteni)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("telfclimanteni");
+            entity.Property(e => e.Telfpago)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("telfpago");
+            entity.Property(e => e.Tipo)
+                .HasMaxLength(5)
+                .IsUnicode(false)
+                .HasColumnName("tipo");
+        });
+
         modelBuilder.Entity<MensajeriaTicket>(entity =>
         {
             entity.HasKey(e => e.Idmensaje);
@@ -87,7 +172,10 @@ public partial class CMSSoftwarecontrolContext : DbContext
             entity.Property(e => e.Fechacrea)
                 .HasColumnType("datetime")
                 .HasColumnName("fechacrea");
-            entity.Property(e => e.Idcliente).HasColumnName("idcliente");
+            entity.Property(e => e.Idcliente)
+                .HasMaxLength(40)
+                .IsUnicode(false)
+                .HasColumnName("idcliente");
             entity.Property(e => e.Iduser).HasColumnName("iduser");
             entity.Property(e => e.MensajeDelProblema)
                 .HasMaxLength(1000)
@@ -113,8 +201,6 @@ public partial class CMSSoftwarecontrolContext : DbContext
 
         modelBuilder.Entity<UsuarioPortalTicket>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK_UsuarioPortalTicket1");
-
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Active)
                 .IsRequired()
@@ -130,7 +216,7 @@ public partial class CMSSoftwarecontrolContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.IdCliente)
                 .IsRequired()
-                .HasMaxLength(40)
+                .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("idCliente");
             entity.Property(e => e.Nombre)
