@@ -15,7 +15,7 @@ public partial class UsuarioPortalTicket
 
     public string Correo { get; set; }
 
-    public int IdCliente { get; set; }
+    public string IdCliente { get; set; }
 
     public string Rol { get; set; }
 

@@ -113,6 +113,8 @@ public partial class CMSSoftwarecontrolContext : DbContext
 
         modelBuilder.Entity<UsuarioPortalTicket>(entity =>
         {
+            entity.HasKey(e => e.Id).HasName("PK_UsuarioPortalTicket1");
+
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Active)
                 .IsRequired()
@@ -126,7 +128,11 @@ public partial class CMSSoftwarecontrolContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.IdCliente).HasColumnName("idCliente");
+            entity.Property(e => e.IdCliente)
+                .IsRequired()
+                .HasMaxLength(40)
+                .IsUnicode(false)
+                .HasColumnName("idCliente");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(50)
                 .IsUnicode(false);
