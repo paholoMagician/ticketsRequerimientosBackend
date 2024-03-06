@@ -23,6 +23,7 @@ namespace ticketsRequerimientosBackend.Authentication_Token
                 new Claim(ClaimTypes.NameIdentifier, usuariosPortalTicket.Id.ToString()),
                 new Claim(ClaimTypes.Name, usuariosPortalTicket.Usuario),
                 new Claim(ClaimTypes.Role, usuariosPortalTicket.Rol),
+                new Claim(ClaimTypes.Country, usuariosPortalTicket.IdCliente),
                 new Claim(ClaimTypes.AuthorizationDecision, usuariosPortalTicket.Active),
             };
 
