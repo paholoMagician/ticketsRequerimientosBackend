@@ -36,12 +36,12 @@ namespace ticketsRequerimientosBackend.Controllers
         public IActionResult ObtenerTicket([FromRoute] int id)
         {
             var Datos = from tr in _context.Ticketresolucion
-                        join ct in _context.Cliente on tr.Idcliente equals ct.Codcliente
+                        join ag in _context.Agencia on tr.IdAgencia equals ag.Codagencia
+                        join ct in _context.Cliente on ag.Codcliente equals ct.Codcliente
                         where tr.IdRequerimiento == id
                         select new
                         {
                             tr.IdRequerimiento,
-                            tr.Idcliente,
                             ct.Ruc,
                             ct.Nombre,
                             ct.Telfpago,
@@ -52,9 +52,7 @@ namespace ticketsRequerimientosBackend.Controllers
                             tr.Estado,
                             tr.Tipo,
                             tr.MensajeDelProblema,
-                            tr.MensajeResolucion,
                             tr.Obervacion,
-                            tr.Iduser,
                             tr.Fechacrea
                         };
             return (Datos != null) ? Ok(Datos) : NotFound();
