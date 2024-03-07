@@ -189,6 +189,11 @@ public partial class CMSSoftwarecontrolContext : DbContext
                 .HasMaxLength(1000)
                 .IsUnicode(false)
                 .HasColumnName("obervacion");
+            entity.Property(e => e.Tipo)
+                .HasMaxLength(2)
+                .IsUnicode(false)
+                .IsFixedLength()
+                .HasColumnName("tipo");
             entity.Property(e => e.UrlA)
                 .HasMaxLength(500)
                 .IsUnicode(false)

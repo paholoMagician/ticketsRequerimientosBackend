@@ -50,6 +50,7 @@ namespace ticketsRequerimientosBackend.Controllers
                             tr.UrlA,
                             tr.UrlB,
                             tr.Estado,
+                            tr.Tipo,
                             tr.MensajeDelProblema,
                             tr.MensajeResolucion,
                             tr.Obervacion,

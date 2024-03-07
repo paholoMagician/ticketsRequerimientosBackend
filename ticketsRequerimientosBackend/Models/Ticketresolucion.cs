@@ -26,4 +26,6 @@ public partial class Ticketresolucion
     public int? Iduser { get; set; }
 
     public DateTime? Fechacrea { get; set; }
+
+    public string Tipo { get; set; }
 }
