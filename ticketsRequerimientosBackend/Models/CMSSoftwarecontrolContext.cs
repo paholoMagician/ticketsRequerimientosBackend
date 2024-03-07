@@ -168,23 +168,22 @@ public partial class CMSSoftwarecontrolContext : DbContext
             entity.ToTable("ticketresolucion");
 
             entity.Property(e => e.IdRequerimiento).HasColumnName("idRequerimiento");
+            entity.Property(e => e.CodMaquina)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("codMaquina");
             entity.Property(e => e.Estado).HasColumnName("estado");
             entity.Property(e => e.Fechacrea)
                 .HasColumnType("datetime")
                 .HasColumnName("fechacrea");
-            entity.Property(e => e.Idcliente)
+            entity.Property(e => e.IdAgencia)
                 .HasMaxLength(40)
                 .IsUnicode(false)
-                .HasColumnName("idcliente");
-            entity.Property(e => e.Iduser).HasColumnName("iduser");
+                .HasColumnName("idAgencia");
             entity.Property(e => e.MensajeDelProblema)
                 .HasMaxLength(1000)
                 .IsUnicode(false)
                 .HasColumnName("mensajeDelProblema");
-            entity.Property(e => e.MensajeResolucion)
-                .HasMaxLength(1000)
-                .IsUnicode(false)
-                .HasColumnName("mensajeResolucion");
             entity.Property(e => e.Obervacion)
                 .HasMaxLength(1000)
                 .IsUnicode(false)
