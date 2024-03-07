@@ -15,7 +15,7 @@ namespace ticketsRequerimientosBackend.Controllers
         }
 
         [HttpGet("ObtenerMasterTable/{master}")]
-        public IActionResult ObtenerTicket([FromRoute] string master)
+        public IActionResult ObtenerMaster([FromRoute] string master)
         {
             var Datos = from mt in _context.MasterTable
                         where mt.Master == master
