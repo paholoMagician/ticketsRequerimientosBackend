@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Data;
 using ticketsRequerimientosBackend.Models;
 
@@ -11,9 +13,11 @@ namespace ticketsRequerimientosBackend.Controllers
     {
 
         private readonly CMSSoftwarecontrolContext _context;
-        public TicketResolucionController(CMSSoftwarecontrolContext context)
+        private readonly IHubContext<TicketResolucionHUB> _ticketResolucionHUB;
+        public TicketResolucionController(CMSSoftwarecontrolContext context, IHubContext<TicketResolucionHUB> ticketResolucionHUB)
         {
             _context = context;
+            _ticketResolucionHUB = ticketResolucionHUB;
         }
 
         [HttpPost]
@@ -81,6 +85,7 @@ namespace ticketsRequerimientosBackend.Controllers
             if (ticket != null)
             {
                 ticket.Estado = estado;
+                await _ticketResolucionHUB.Clients.All.SendAsync("SendTicketRequerimiento", ticket.Estado);
                 return (await _context.SaveChangesAsync() > 0) ? Ok() : BadRequest();
             }
             return NotFound();
