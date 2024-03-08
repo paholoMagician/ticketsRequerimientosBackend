@@ -85,6 +85,7 @@ namespace ticketsRequerimientosBackend.Controllers
             if (ticket != null)
             {
                 ticket.Estado = estado;
+                //aqui es el hub
                 await _ticketResolucionHUB.Clients.All.SendAsync("SendTicketRequerimiento", ticket.Estado);
                 return (await _context.SaveChangesAsync() > 0) ? Ok() : BadRequest();
             }
