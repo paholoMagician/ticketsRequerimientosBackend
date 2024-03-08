@@ -3,7 +3,7 @@ using ticketsRequerimientosBackend.Models;
 
 namespace ticketsRequerimientosBackend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Master")]
     [ApiController]
     public class MasterTableController : ControllerBase
     {
