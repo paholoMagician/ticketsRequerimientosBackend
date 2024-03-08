@@ -76,7 +76,7 @@ namespace ticketsRequerimientosBackend.Controllers
             return (await _context.SaveChangesAsync() > 0) ? Ok() : BadRequest();
         }
 
-        [HttpPut]
+        [HttpGet]
         [Route("ActualizarTicketEstado/{id}/{estado}")]
         public async Task<IActionResult> ActualizarTicketEstado([FromRoute] int id, [FromRoute] int estado)
         {
