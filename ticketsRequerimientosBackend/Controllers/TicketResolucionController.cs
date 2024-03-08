@@ -45,6 +45,8 @@ namespace ticketsRequerimientosBackend.Controllers
                             ct.Ruc,
                             ct.Nombre,
                             ct.Telfpago,
+                            NombreAgencia = ag.Nombre,
+                            ag.CampoB,
                             ct.NombreMantenimiento,
                             ct.Telfclimanteni,
                             tr.UrlA,
