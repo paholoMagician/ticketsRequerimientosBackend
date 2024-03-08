@@ -106,6 +106,11 @@ app.UseCors(builder => builder.WithOrigins("http://localhost:4200/", "*")
                               .AllowAnyMethod()
                               .AllowAnyOrigin());
 
+var webSocketOptions = new WebSocketOptions
+{
+    KeepAliveInterval = TimeSpan.FromSeconds(120)
+};
+webSocketOptions.AllowedOrigins.Add("http://192.168.100.148:2251");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
