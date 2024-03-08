@@ -9,7 +9,7 @@ public partial class Ticketresolucion
 {
     public int IdRequerimiento { get; set; }
 
-    public int? Idcliente { get; set; }
+    public string Idagencia { get; set; }
 
     public string UrlA { get; set; }
 
@@ -19,11 +19,11 @@ public partial class Ticketresolucion
 
     public string MensajeDelProblema { get; set; }
 
-    public string MensajeResolucion { get; set; }
-
     public string Obervacion { get; set; }
 
-    public int? Iduser { get; set; }
+    public string CodMaquina { get; set; }
 
     public DateTime? Fechacrea { get; set; }
+
+    public string Tipo { get; set; }
 }
