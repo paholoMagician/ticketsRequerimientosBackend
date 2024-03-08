@@ -32,13 +32,13 @@ namespace ticketsRequerimientosBackend.Controllers
         }
 
 
-        [HttpGet("ObtenerTicket/{id}")]
-        public IActionResult ObtenerTicket([FromRoute] int id)
+        [HttpGet("ObtenerTicket/{codCliente}")]
+        public IActionResult ObtenerTicket([FromRoute] string codCliente)
         {
             var Datos = from tr in _context.Ticketresolucion
                         join ag in _context.Agencia on tr.IdAgencia equals ag.Codagencia
                         join ct in _context.Cliente on ag.Codcliente equals ct.Codcliente
-                        where tr.IdRequerimiento == id
+                        where ct.Codcliente == codCliente
                         select new
                         {
                             tr.IdRequerimiento,
