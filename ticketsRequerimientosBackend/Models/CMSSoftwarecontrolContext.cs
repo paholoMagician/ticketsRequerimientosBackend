@@ -298,6 +298,10 @@ public partial class CMSSoftwarecontrolContext : DbContext
             entity.ToTable("mensajeriaTicket");
 
             entity.Property(e => e.Idmensaje).HasColumnName("idmensaje");
+            entity.Property(e => e.Active)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('A')");
             entity.Property(e => e.Coduser)
                 .HasMaxLength(50)
                 .IsUnicode(false)
