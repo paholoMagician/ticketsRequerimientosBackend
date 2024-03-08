@@ -7,7 +7,7 @@ using ticketsRequerimientosBackend.Models;
 namespace ticketsRequerimientosBackend.Controllers
 {
     //[Authorize(Policy = "All")]
-    [Route("api/[controller]")]
+    [Route("api/Login")]
     [ApiController]
     public class LoginController : ControllerBase
     {
@@ -22,7 +22,7 @@ namespace ticketsRequerimientosBackend.Controllers
         //[Authorize(Policy = "All")]
         [HttpPost]
         [Route("InicioSesion")]
-        public IActionResult Login(UserRequest userRequest)
+        public IActionResult Login([FromBody] UserRequest userRequest)
         {
             Authenticator authenticator = new(_context);
             GenerateToken generateToken = new(_configuration);
@@ -30,13 +30,13 @@ namespace ticketsRequerimientosBackend.Controllers
             if (user != null)
             {
                 var token = generateToken.Generate(user);
-                return Ok(token);
+                return Ok(new { token = token });
             }
             else
             {
                 return NotFound("Usuario no registrado");
             }
-
         }
+
     }
 }

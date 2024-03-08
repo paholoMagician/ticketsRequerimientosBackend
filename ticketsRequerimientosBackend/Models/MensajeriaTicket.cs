@@ -16,4 +16,6 @@ public partial class MensajeriaTicket
     public string Coduser { get; set; }
 
     public int Idmensaje { get; set; }
+
+    public string Active { get; set; }
 }

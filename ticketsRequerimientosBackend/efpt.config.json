@@ -16,7 +16,19 @@
    "T4TemplatePath": null,
    "Tables": [
       {
+         "Name": "[dbo].[agencia]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[asignacionTecnicoTicket]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cliente]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MasterTable]",
          "ObjectType": 0
       },
       {
