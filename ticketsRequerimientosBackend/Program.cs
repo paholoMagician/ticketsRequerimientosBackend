@@ -102,12 +102,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(builder => builder.WithOrigins("http://localhost:4200/")
+app.UseCors(builder => builder.WithOrigins("http://localhost:4200/", "http://192.168.100.148:2251")
                               .AllowAnyHeader()
                               .AllowAnyMethod()
-                              .AllowAnyOrigin().
-                              AllowCredentials()
-                              .SetIsOriginAllowedToAllowWildcardSubdomains());
+                              .AllowCredentials());
 
 var webSocketOptions = new WebSocketOptions
 {
