@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
 using Microsoft.OpenApi.Models;
+using ticketsRequerimientosBackend;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -110,12 +111,17 @@ var webSocketOptions = new WebSocketOptions
 {
     KeepAliveInterval = TimeSpan.FromSeconds(120)
 };
+
+
 webSocketOptions.AllowedOrigins.Add("http://192.168.100.148:2251");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseWebSockets(webSocketOptions);
 // Agrega autenticación JWT
 app.UseAuthentication(); 
 app.UseAuthorization();
 app.MapControllers();
+
+app.MapHub<TicketResolucionHUB>("/hubs/TicketResolucionHub");
+
 app.Run();

@@ -13,7 +13,7 @@ namespace ticketsRequerimientosBackend.Controllers
             _context = context;
         }
 
-        [HttpGet("ObtenerMensajesTicket/{idRequerimiento/top}")]
+        [HttpGet("ObtenerMensajesTicket/idRequerimiento/top")]
         public IActionResult ObtenerMensajeTicket([FromRoute] int idRequerimiento, [FromRoute] int top)
         {
             var Datos = (from mjt in _context.MensajeriaTicket
