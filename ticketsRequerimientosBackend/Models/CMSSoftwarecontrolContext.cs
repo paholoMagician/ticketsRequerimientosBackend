@@ -19,11 +19,15 @@ public partial class CMSSoftwarecontrolContext : DbContext
 
     public virtual DbSet<Cliente> Cliente { get; set; }
 
+    public virtual DbSet<ImgFile> ImgFile { get; set; }
+
     public virtual DbSet<MasterTable> MasterTable { get; set; }
 
     public virtual DbSet<MensajeriaTicket> MensajeriaTicket { get; set; }
 
     public virtual DbSet<Ticketresolucion> Ticketresolucion { get; set; }
+
+    public virtual DbSet<Usuario> Usuario { get; set; }
 
     public virtual DbSet<UsuarioPortalTicket> UsuarioPortalTicket { get; set; }
 
@@ -230,6 +234,26 @@ public partial class CMSSoftwarecontrolContext : DbContext
                 .HasColumnName("tipo");
         });
 
+        modelBuilder.Entity<ImgFile>(entity =>
+        {
+            entity.HasKey(e => e.Codentidad).HasName("PK_imgFile1_1");
+
+            entity.ToTable("imgFile");
+
+            entity.Property(e => e.Codentidad)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("codentidad");
+            entity.Property(e => e.Imagen)
+                .IsRequired()
+                .IsUnicode(false)
+                .HasColumnName("imagen");
+            entity.Property(e => e.Tipo)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("tipo");
+        });
+
         modelBuilder.Entity<MasterTable>(entity =>
         {
             entity.HasNoKey();
@@ -358,6 +382,108 @@ public partial class CMSSoftwarecontrolContext : DbContext
                 .HasColumnName("urlB");
         });
 
+        modelBuilder.Entity<Usuario>(entity =>
+        {
+            entity.HasKey(e => e.Coduser).HasName("PK_usuarios");
+
+            entity.ToTable("usuario");
+
+            entity.Property(e => e.Coduser)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("coduser");
+            entity.Property(e => e.Apellido)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("apellido");
+            entity.Property(e => e.Cargo)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("cargo");
+            entity.Property(e => e.Cedula)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .HasColumnName("cedula");
+            entity.Property(e => e.CodCanton)
+                .HasMaxLength(5)
+                .IsUnicode(false)
+                .IsFixedLength()
+                .HasColumnName("codCanton");
+            entity.Property(e => e.CodCia)
+                .HasMaxLength(25)
+                .IsUnicode(false)
+                .HasColumnName("codCia");
+            entity.Property(e => e.CodDepartamento)
+                .HasMaxLength(5)
+                .IsUnicode(false)
+                .IsFixedLength()
+                .HasColumnName("codDepartamento");
+            entity.Property(e => e.CodEstadoCivil)
+                .HasMaxLength(5)
+                .IsUnicode(false)
+                .IsFixedLength()
+                .HasColumnName("codEstadoCivil");
+            entity.Property(e => e.CodLicencia)
+                .HasMaxLength(5)
+                .IsUnicode(false)
+                .IsFixedLength()
+                .HasColumnName("codLicencia");
+            entity.Property(e => e.CodProvincia)
+                .HasMaxLength(5)
+                .IsUnicode(false)
+                .IsFixedLength()
+                .HasColumnName("codProvincia");
+            entity.Property(e => e.CodSexo)
+                .HasMaxLength(5)
+                .IsUnicode(false)
+                .IsFixedLength()
+                .HasColumnName("codSexo");
+            entity.Property(e => e.Codcaracteristicas)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("codcaracteristicas");
+            entity.Property(e => e.Contrasenia)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("contrasenia");
+            entity.Property(e => e.Direccion)
+                .HasMaxLength(500)
+                .IsUnicode(false)
+                .HasColumnName("direccion");
+            entity.Property(e => e.Edad).HasColumnName("edad");
+            entity.Property(e => e.Email)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.Estado)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("estado");
+            entity.Property(e => e.Fecingreso)
+                .HasColumnType("datetime")
+                .HasColumnName("fecingreso");
+            entity.Property(e => e.Fecsalida)
+                .HasColumnType("datetime")
+                .HasColumnName("fecsalida");
+            entity.Property(e => e.Movilidad)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("movilidad");
+            entity.Property(e => e.Nombre)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("nombre");
+            entity.Property(e => e.Telf)
+                .HasMaxLength(16)
+                .IsUnicode(false)
+                .HasColumnName("telf");
+            entity.Property(e => e.Tipo)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("tipo");
+            entity.Property(e => e.Valoracion).HasColumnName("valoracion");
+        });
+
         modelBuilder.Entity<UsuarioPortalTicket>(entity =>
         {
             entity.Property(e => e.Id).HasColumnName("id");
@@ -369,6 +495,11 @@ public partial class CMSSoftwarecontrolContext : DbContext
             entity.Property(e => e.Apellido)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+            entity.Property(e => e.CodUser)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("codUser");
             entity.Property(e => e.Correo)
                 .IsRequired()
                 .HasMaxLength(50)

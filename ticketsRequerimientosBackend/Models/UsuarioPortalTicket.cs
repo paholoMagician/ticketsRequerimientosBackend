@@ -23,5 +23,7 @@ public partial class UsuarioPortalTicket
 
     public string Apellido { get; set; }
 
+    public string CodUser { get; set; }
+
     public string Active { get; set; }
 }

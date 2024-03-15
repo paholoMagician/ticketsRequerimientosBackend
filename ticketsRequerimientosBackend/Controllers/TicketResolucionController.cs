@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Data;
 using ticketsRequerimientosBackend.Models;
 
@@ -43,6 +42,8 @@ namespace ticketsRequerimientosBackend.Controllers
                         join ag in _context.Agencia on tr.IdAgencia equals ag.Codagencia
                         join ct in _context.Cliente on ag.Codcliente equals ct.Codcliente
                         where ct.Codcliente == codCliente
+                        join im in _context.ImgFile on ct.Codcliente equals im.Codentidad
+                        where im.Tipo.Equals("Cliente")
                         select new
                         {
                             tr.IdRequerimiento,
@@ -59,7 +60,8 @@ namespace ticketsRequerimientosBackend.Controllers
                             tr.Tipo,
                             tr.MensajeDelProblema,
                             tr.Obervacion,
-                            tr.Fechacrea
+                            tr.Fechacrea,
+                            im.Imagen
                         };
             return (Datos != null) ? Ok(Datos) : NotFound();
         }
@@ -85,8 +87,9 @@ namespace ticketsRequerimientosBackend.Controllers
             if (ticket != null)
             {
                 ticket.Estado = estado;
+                //var ticketModel = new TicketModelDTO { Id = id, Estado = estado };
                 //aqui es el hub
-                await _ticketResolucionHUB.Clients.All.SendAsync("SendTicketRequerimiento", ticket.Estado);
+                await _ticketResolucionHUB.Clients.All.SendAsync("SendTicketRequerimiento", new { id = id, estado =ticket.Estado });
                 return (await _context.SaveChangesAsync() > 0) ? Ok() : BadRequest();
             }
             return NotFound();

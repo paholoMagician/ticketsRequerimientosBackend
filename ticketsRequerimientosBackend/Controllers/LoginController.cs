@@ -29,8 +29,13 @@ namespace ticketsRequerimientosBackend.Controllers
             var user = authenticator.Authenticator_User(userRequest);
             if (user != null)
             {
+                var imgUser = from im in _context.ImgFile
+                              join uspt in _context.UsuarioPortalTicket on user.Usuario equals uspt.Usuario
+                              join us in _context.Usuario on uspt.CodUser equals us.Coduser
+                              where im.Codentidad == ("IMG-"+us.Coduser) && im.Tipo == "Perfil"
+                              select im.Imagen;
                 var token = generateToken.Generate(user);
-                return Ok(new { token = token });
+                return Ok(new { token = token , imagen = imgUser});
             }
             else
             {

@@ -28,6 +28,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[imgFile]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[MasterTable]",
          "ObjectType": 0
       },
@@ -37,6 +41,10 @@
       },
       {
          "Name": "[dbo].[ticketresolucion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[usuario]",
          "ObjectType": 0
       },
       {
