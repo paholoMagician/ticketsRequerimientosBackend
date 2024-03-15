@@ -89,7 +89,7 @@ namespace ticketsRequerimientosBackend.Controllers
                 ticket.Estado = estado;
                 //var ticketModel = new TicketModelDTO { Id = id, Estado = estado };
                 //aqui es el hub
-                await _ticketResolucionHUB.Clients.All.SendAsync("SendTicketRequerimiento", new { id = id, estado =ticket.Estado });
+                await _ticketResolucionHUB.Clients.All.SendAsync("SendTicketRequerimiento", new { id = id, estado = estado });
                 return (await _context.SaveChangesAsync() > 0) ? Ok() : BadRequest();
             }
             return NotFound();

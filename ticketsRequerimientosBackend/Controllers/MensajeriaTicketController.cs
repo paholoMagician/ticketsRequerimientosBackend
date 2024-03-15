@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using ticketsRequerimientosBackend.Models;
 
 namespace ticketsRequerimientosBackend.Controllers
@@ -8,9 +9,11 @@ namespace ticketsRequerimientosBackend.Controllers
     public class MensajeriaTicketController : ControllerBase
     {
         private readonly CMSSoftwarecontrolContext _context;
-        public MensajeriaTicketController(CMSSoftwarecontrolContext context)
+        private readonly IHubContext<MensajeHUB> _mensajeHub;
+        public MensajeriaTicketController(CMSSoftwarecontrolContext context, IHubContext<MensajeHUB> mensajeHub)
         {
             _context = context;
+            _mensajeHub = mensajeHub;
         }
 
         [HttpGet("ObtenerMensajesTicket/idRequerimiento/top")]
@@ -31,6 +34,11 @@ namespace ticketsRequerimientosBackend.Controllers
             if (ModelState.IsValid)
             {
                 _context.MensajeriaTicket.Add(model);
+                var respuesta = from uspt in _context.UsuarioPortalTicket
+                                where uspt.CodUser == model.Coduser
+                                join img in _context.ImgFile on uspt.CodUser equals img.Codentidad
+                                select new { imagen = img.Imagen, remitente = uspt.Usuario } ;
+                await _mensajeHub.Clients.All.SendAsync("SendMessageHub", model, respuesta);
                 return (await _context.SaveChangesAsync() > 0) ? Ok() : BadRequest("No se guardo");
             }
             else
